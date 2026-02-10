@@ -1,4 +1,4 @@
-export type { LoginRequest, TokenResponse, AuthState } from './auth';
+export type { LoginRequest, AuthState } from './auth';
 export type { PageResponse, PageParams } from './common';
 export type { TestType, TestResponse, CreateTestRequest, UpdateTestRequest } from './test';
 export type {

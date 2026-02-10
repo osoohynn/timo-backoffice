@@ -3,14 +3,13 @@ import { MailOutlined } from '@ant-design/icons';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Navigate } from 'react-router-dom';
-import { useLogin } from '../hooks/useAuth';
-import { useAuthStore } from '../stores/authStore';
+import { useLogin, useAuthCheck } from '../hooks/useAuth';
 import { loginSchema, type LoginFormData } from '../utils/validation';
 
 const { Title } = Typography;
 
 export function LoginPage() {
-  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+  const { data, isLoading } = useAuthCheck();
   const loginMutation = useLogin();
 
   const {
@@ -22,7 +21,9 @@ export function LoginPage() {
     defaultValues: { email: '' },
   });
 
-  if (isAuthenticated) {
+  if (isLoading) return null;
+
+  if (data) {
     return <Navigate to="/" replace />;
   }
 

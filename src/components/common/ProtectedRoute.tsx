@@ -1,10 +1,19 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { useAuthStore } from '../../stores/authStore';
+import { Spin } from 'antd';
+import { useAuthCheck } from '../../hooks/useAuth';
 
 export function ProtectedRoute() {
-  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+  const { isLoading, isError } = useAuthCheck();
 
-  if (!isAuthenticated) {
+  if (isLoading) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+        <Spin size="large" />
+      </div>
+    );
+  }
+
+  if (isError) {
     return <Navigate to="/login" replace />;
   }
 

@@ -1,4 +1,4 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { message } from 'antd';
 import { authApi } from '../api/auth';
@@ -11,8 +11,8 @@ export function useLogin() {
 
   return useMutation({
     mutationFn: (data: LoginRequest) => authApi.login(data),
-    onSuccess: (response) => {
-      login(response.accessToken, response.refreshToken);
+    onSuccess: () => {
+      login();
       navigate('/');
     },
     onError: () => {
@@ -30,4 +30,13 @@ export function useLogout() {
     logout();
     navigate('/login');
   };
+}
+
+export function useAuthCheck() {
+  return useQuery({
+    queryKey: ['auth', 'me'],
+    queryFn: () => authApi.me(),
+    retry: false,
+    staleTime: 5 * 60 * 1000,
+  });
 }

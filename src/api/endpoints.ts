@@ -3,6 +3,7 @@ export const ENDPOINTS = {
     login: '/test-auth/login',
     reissue: '/test-auth/reissue',
     logout: '/auth/logout',
+    me: '/users/me',
   },
   tests: {
     base: '/tests',

@@ -27,6 +27,6 @@ export const ENDPOINTS = {
   },
   introductions: {
     admin: '/admin/introductions',
-    adminByVersion: (version: number) => `/admin/introductions/${version}`,
+    adminById: (id: number) => `/admin/introductions/${id}`,
   },
 } as const;

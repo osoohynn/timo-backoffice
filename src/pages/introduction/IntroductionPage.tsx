@@ -40,7 +40,7 @@ export function IntroductionPage() {
   const handleSubmit = (formData: IntroductionFormData) => {
     if (editingIntroduction) {
       updateMutation.mutate(
-        { version: editingIntroduction.version, data: formData },
+        { id: editingIntroduction.id, data: formData },
         { onSuccess: handleClose }
       );
     } else {
@@ -62,7 +62,7 @@ export function IntroductionPage() {
         data={data || []}
         loading={isLoading}
         onEdit={handleOpenEdit}
-        onDelete={(version) => deleteMutation.mutate(version)}
+        onDelete={(id) => deleteMutation.mutate(id)}
       />
       <IntroductionFormModal
         open={modalOpen}

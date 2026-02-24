@@ -9,21 +9,37 @@ interface IntroductionTableProps {
   data: IntroductionResponse[];
   loading: boolean;
   onEdit: (record: IntroductionResponse) => void;
-  onDelete: (version: number) => void;
+  onDelete: (id: number) => void;
 }
 
 export function IntroductionTable({ data, loading, onEdit, onDelete }: IntroductionTableProps) {
-  const sortedData = [...data].sort((a, b) => b.version - a.version);
+  const sortedData = [...data].sort((a, b) => b.version - a.version || a.sequence - b.sequence);
 
   const columns: ColumnsType<IntroductionResponse> = [
     {
       title: '버전',
       dataIndex: 'version',
-      width: 100,
+      width: 80,
     },
     {
-      title: '내용',
-      dataIndex: 'content',
+      title: '순번',
+      dataIndex: 'sequence',
+      width: 80,
+    },
+    {
+      title: '제목',
+      dataIndex: 'title',
+      width: 160,
+      ellipsis: true,
+    },
+    {
+      title: '설명',
+      dataIndex: 'description',
+      ellipsis: true,
+    },
+    {
+      title: '이미지 URL',
+      dataIndex: 'imageUrl',
       ellipsis: true,
     },
     {
@@ -49,8 +65,8 @@ export function IntroductionTable({ data, loading, onEdit, onDelete }: Introduct
             onClick={() =>
               showConfirmModal({
                 title: '소개글 삭제',
-                content: `버전 ${record.version} 소개글을 삭제하시겠습니까?`,
-                onConfirm: () => onDelete(record.version),
+                content: `"${record.title}" 소개글을 삭제하시겠습니까?`,
+                onConfirm: () => onDelete(record.id),
               })
             }
           />
@@ -65,7 +81,7 @@ export function IntroductionTable({ data, loading, onEdit, onDelete }: Introduct
       dataSource={sortedData}
       rowKey="id"
       loading={loading}
-      scroll={{ x: 600 }}
+      scroll={{ x: 900 }}
       pagination={false}
     />
   );

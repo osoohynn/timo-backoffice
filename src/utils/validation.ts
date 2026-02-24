@@ -36,7 +36,10 @@ export const feedbackPromptSchema = z.object({
 
 export const introductionSchema = z.object({
   version: z.number({ error: '버전을 입력하세요' }).min(1, '버전은 1 이상이어야 합니다'),
-  content: z.string().min(1, '내용을 입력하세요'),
+  sequence: z.number({ error: '순번을 입력하세요' }).min(1, '순번은 1 이상이어야 합니다'),
+  title: z.string().min(1, '제목을 입력하세요'),
+  description: z.string().min(1, '설명을 입력하세요'),
+  imageUrl: z.string().min(1, '이미지 URL을 입력하세요'),
 });
 
 export type LoginFormData = z.infer<typeof loginSchema>;

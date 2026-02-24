@@ -18,11 +18,11 @@ export const introductionsApi = {
     await apiClient.post(ENDPOINTS.introductions.admin, data);
   },
 
-  update: async (version: number, data: UpdateIntroductionRequest): Promise<void> => {
-    await apiClient.patch(ENDPOINTS.introductions.adminByVersion(version), data);
+  update: async (id: number, data: UpdateIntroductionRequest): Promise<void> => {
+    await apiClient.patch(ENDPOINTS.introductions.adminById(id), data);
   },
 
-  delete: async (version: number): Promise<void> => {
-    await apiClient.delete(ENDPOINTS.introductions.adminByVersion(version));
+  delete: async (id: number): Promise<void> => {
+    await apiClient.delete(ENDPOINTS.introductions.adminById(id));
   },
 };

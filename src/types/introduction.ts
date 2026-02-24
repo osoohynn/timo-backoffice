@@ -1,16 +1,25 @@
 export interface IntroductionResponse {
   id: number;
   version: number;
-  content: string;
+  sequence: number;
+  title: string;
+  description: string;
+  imageUrl: string;
   createdAt: string;
 }
 
 export interface CreateIntroductionRequest {
   version: number;
-  content: string;
+  sequence: number;
+  title: string;
+  description: string;
+  imageUrl: string;
 }
 
 export interface UpdateIntroductionRequest {
   version?: number;
-  content?: string;
+  sequence?: number;
+  title?: string;
+  description?: string;
+  imageUrl?: string;
 }

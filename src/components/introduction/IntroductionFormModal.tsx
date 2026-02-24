@@ -27,15 +27,27 @@ export function IntroductionFormModal({
     formState: { errors },
   } = useForm<IntroductionFormData>({
     resolver: zodResolver(introductionSchema),
-    defaultValues: { version: undefined, content: '' },
+    defaultValues: {
+      version: undefined,
+      sequence: undefined,
+      title: '',
+      description: '',
+      imageUrl: '',
+    },
   });
 
   useEffect(() => {
     if (open) {
       if (introduction) {
-        reset({ version: introduction.version, content: introduction.content });
+        reset({
+          version: introduction.version,
+          sequence: introduction.sequence,
+          title: introduction.title,
+          description: introduction.description,
+          imageUrl: introduction.imageUrl,
+        });
       } else {
-        reset({ version: undefined, content: '' });
+        reset({ version: undefined, sequence: undefined, title: '', description: '', imageUrl: '' });
       }
     }
   }, [open, introduction, reset]);
@@ -73,16 +85,56 @@ export function IntroductionFormModal({
           />
         </Form.Item>
         <Form.Item
-          label="내용"
-          validateStatus={errors.content ? 'error' : ''}
-          help={errors.content?.message}
+          label="순번"
+          validateStatus={errors.sequence ? 'error' : ''}
+          help={errors.sequence?.message}
         >
           <Controller
-            name="content"
+            name="sequence"
             control={control}
             render={({ field }) => (
-              <Input.TextArea {...field} rows={10} placeholder="소개글 내용을 입력하세요" />
+              <InputNumber
+                {...field}
+                min={1}
+                style={{ width: '100%' }}
+                placeholder="순번을 입력하세요"
+              />
             )}
+          />
+        </Form.Item>
+        <Form.Item
+          label="제목"
+          validateStatus={errors.title ? 'error' : ''}
+          help={errors.title?.message}
+        >
+          <Controller
+            name="title"
+            control={control}
+            render={({ field }) => <Input {...field} placeholder="제목을 입력하세요" />}
+          />
+        </Form.Item>
+        <Form.Item
+          label="설명"
+          validateStatus={errors.description ? 'error' : ''}
+          help={errors.description?.message}
+        >
+          <Controller
+            name="description"
+            control={control}
+            render={({ field }) => (
+              <Input.TextArea {...field} rows={4} placeholder="설명을 입력하세요" />
+            )}
+          />
+        </Form.Item>
+        <Form.Item
+          label="이미지 URL"
+          validateStatus={errors.imageUrl ? 'error' : ''}
+          help={errors.imageUrl?.message}
+        >
+          <Controller
+            name="imageUrl"
+            control={control}
+            render={({ field }) => <Input {...field} placeholder="이미지 URL을 입력하세요" />}
           />
         </Form.Item>
       </Form>

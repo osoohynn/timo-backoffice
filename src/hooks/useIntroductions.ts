@@ -32,8 +32,8 @@ export function useCreateIntroduction() {
 export function useUpdateIntroduction() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: ({ version, data }: { version: number; data: UpdateIntroductionRequest }) =>
-      introductionsApi.update(version, data),
+    mutationFn: ({ id, data }: { id: number; data: UpdateIntroductionRequest }) =>
+      introductionsApi.update(id, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.lists() });
       message.success('소개글이 수정되었습니다');
@@ -47,7 +47,7 @@ export function useUpdateIntroduction() {
 export function useDeleteIntroduction() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (version: number) => introductionsApi.delete(version),
+    mutationFn: (id: number) => introductionsApi.delete(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.lists() });
       message.success('소개글이 삭제되었습니다');

@@ -8,10 +8,11 @@ const queryKeys = {
   lists: () => [...queryKeys.all, 'list'] as const,
 };
 
-export function useIntroductions() {
+export function useIntroductions(version: number | null) {
   return useQuery({
-    queryKey: queryKeys.lists(),
-    queryFn: () => introductionsApi.getAll(),
+    queryKey: [...queryKeys.lists(), version],
+    queryFn: () => introductionsApi.getAll(version!),
+    enabled: version !== null,
   });
 }
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button } from 'antd';
+import { Button, InputNumber, Space } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { PageHeader } from '../../components/common/PageHeader';
 import { IntroductionTable } from '../../components/introduction/IntroductionTable';
@@ -16,8 +16,9 @@ import type { IntroductionFormData } from '../../utils/validation';
 export function IntroductionPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [editingIntroduction, setEditingIntroduction] = useState<IntroductionResponse | null>(null);
+  const [selectedVersion, setSelectedVersion] = useState<number | null>(null);
 
-  const { data, isLoading } = useIntroductions();
+  const { data, isLoading } = useIntroductions(selectedVersion);
   const createMutation = useCreateIntroduction();
   const updateMutation = useUpdateIntroduction();
   const deleteMutation = useDeleteIntroduction();
@@ -53,9 +54,18 @@ export function IntroductionPage() {
       <PageHeader
         title="소개글 관리"
         extra={
-          <Button type="primary" icon={<PlusOutlined />} onClick={handleOpenCreate}>
-            소개글 생성
-          </Button>
+          <Space>
+            <InputNumber
+              min={1}
+              placeholder="버전 선택"
+              value={selectedVersion}
+              onChange={(v) => setSelectedVersion(v)}
+              style={{ width: 120 }}
+            />
+            <Button type="primary" icon={<PlusOutlined />} onClick={handleOpenCreate}>
+              소개글 생성
+            </Button>
+          </Space>
         }
       />
       <IntroductionTable

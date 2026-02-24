@@ -7,9 +7,10 @@ import type {
 } from '../types';
 
 export const introductionsApi = {
-  getAll: async (): Promise<IntroductionResponse[]> => {
+  getAll: async (version: number): Promise<IntroductionResponse[]> => {
     const response = await apiClient.get<IntroductionResponse[]>(
-      ENDPOINTS.introductions.base
+      ENDPOINTS.introductions.base,
+      { params: { version } }
     );
     return response.data;
   },

@@ -9,7 +9,7 @@ import type {
 export const introductionsApi = {
   getAll: async (): Promise<IntroductionResponse[]> => {
     const response = await apiClient.get<IntroductionResponse[]>(
-      ENDPOINTS.introductions.admin
+      ENDPOINTS.introductions.base
     );
     return response.data;
   },

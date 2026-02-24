@@ -26,6 +26,7 @@ export const ENDPOINTS = {
     byVersion: (version: number) => `/feedback-prompts/${version}`,
   },
   introductions: {
+    base: '/introductions',
     admin: '/admin/introductions',
     adminById: (id: number) => `/admin/introductions/${id}`,
   },

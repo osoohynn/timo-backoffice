@@ -23,3 +23,8 @@ export const ZTPI_CATEGORY_OPTIONS = Object.entries(ZTPI_CATEGORY_CONFIG).map(
 export const TEST_TYPE_OPTIONS = Object.entries(TEST_TYPE_CONFIG).map(
   ([value, { label }]) => ({ label, value })
 );
+
+export const GROUP_TYPE_OPTIONS = [
+  { label: '친구', value: 'FRIEND' },
+  { label: '캐릭터', value: 'CHARACTER' },
+];

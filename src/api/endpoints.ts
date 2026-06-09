@@ -30,4 +30,20 @@ export const ENDPOINTS = {
     admin: '/admin/introductions',
     adminById: (id: number) => `/admin/introductions/${id}`,
   },
+  groups: {
+    base: '/groups',
+    byId: (id: number) => `/groups/${id}`,
+    admin: '/admin/groups',
+    adminSeed: '/admin/groups/seed',
+  },
+  reflections: {
+    adminById: (id: number) => `/admin/reflections/${id}`,
+    adminFeedbackById: (id: number) => `/admin/reflection-feedbacks/${id}`,
+  },
+  timePerspectiveCategories: {
+    base: '/time-perspective-categories',
+    byId: (id: number) => `/time-perspective-categories/${id}`,
+    admin: '/admin/time-perspective-categories',
+    adminById: (id: number) => `/admin/time-perspective-categories/${id}`,
+  },
 } as const;

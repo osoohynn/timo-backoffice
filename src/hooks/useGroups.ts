@@ -39,6 +39,20 @@ export function useCreateGroup() {
   });
 }
 
+export function useDeleteGroup() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (id: number) => groupsApi.delete(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.lists() });
+      message.success('그룹이 삭제되었습니다');
+    },
+    onError: () => {
+      message.error('그룹 삭제에 실패했습니다');
+    },
+  });
+}
+
 export function useSeedGroups() {
   const queryClient = useQueryClient();
   return useMutation({

@@ -34,6 +34,7 @@ export const ENDPOINTS = {
     base: '/groups',
     byId: (id: number) => `/groups/${id}`,
     admin: '/admin/groups',
+    adminById: (id: number) => `/admin/groups/${id}`,
     adminSeed: '/admin/groups/seed',
   },
   reflections: {

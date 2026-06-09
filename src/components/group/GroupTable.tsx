@@ -1,10 +1,13 @@
-import { Table, Tag } from 'antd';
+import { Button, Space, Table, Tag } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
 import type { GroupResponse } from '../../types';
+import { showConfirmModal } from '../common/ConfirmModal';
 
 interface GroupTableProps {
   data: GroupResponse[];
   loading: boolean;
+  onDelete: (id: number) => void;
 }
 
 const GROUP_TYPE_LABEL: Record<string, string> = {
@@ -12,7 +15,7 @@ const GROUP_TYPE_LABEL: Record<string, string> = {
   CHARACTER: '캐릭터',
 };
 
-export function GroupTable({ data, loading }: GroupTableProps) {
+export function GroupTable({ data, loading, onDelete }: GroupTableProps) {
   const columns: ColumnsType<GroupResponse> = [
     {
       title: 'ID',
@@ -35,6 +38,26 @@ export function GroupTable({ data, loading }: GroupTableProps) {
       dataIndex: 'image',
       ellipsis: true,
       render: (image?: string) => image || '-',
+    },
+    {
+      title: '액션',
+      width: 80,
+      render: (_, record) => (
+        <Space>
+          <Button
+            type="text"
+            danger
+            icon={<DeleteOutlined />}
+            onClick={() =>
+              showConfirmModal({
+                title: '그룹 삭제',
+                content: `"${record.name}" 그룹을 삭제하시겠습니까?`,
+                onConfirm: () => onDelete(record.id),
+              })
+            }
+          />
+        </Space>
+      ),
     },
   ];
 

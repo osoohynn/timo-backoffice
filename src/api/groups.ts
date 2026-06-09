@@ -17,6 +17,10 @@ export const groupsApi = {
     await apiClient.post(ENDPOINTS.groups.admin, data);
   },
 
+  delete: async (id: number): Promise<void> => {
+    await apiClient.delete(ENDPOINTS.groups.adminById(id));
+  },
+
   seed: async (): Promise<void> => {
     await apiClient.post(ENDPOINTS.groups.adminSeed);
   },

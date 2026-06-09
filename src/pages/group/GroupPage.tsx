@@ -4,7 +4,7 @@ import { PlusOutlined, DatabaseOutlined } from '@ant-design/icons';
 import { PageHeader } from '../../components/common/PageHeader';
 import { GroupTable } from '../../components/group/GroupTable';
 import { GroupFormModal } from '../../components/group/GroupFormModal';
-import { useGroups, useCreateGroup, useSeedGroups } from '../../hooks/useGroups';
+import { useGroups, useCreateGroup, useDeleteGroup, useSeedGroups } from '../../hooks/useGroups';
 import { showConfirmModal } from '../../components/common/ConfirmModal';
 import type { GroupFormData } from '../../utils/validation';
 
@@ -13,6 +13,7 @@ export function GroupPage() {
 
   const { data, isLoading } = useGroups();
   const createMutation = useCreateGroup();
+  const deleteMutation = useDeleteGroup();
   const seedMutation = useSeedGroups();
 
   const handleSubmit = (formData: GroupFormData) => {
@@ -53,7 +54,11 @@ export function GroupPage() {
           </Space>
         }
       />
-      <GroupTable data={data || []} loading={isLoading} />
+      <GroupTable
+        data={data || []}
+        loading={isLoading}
+        onDelete={(id) => deleteMutation.mutate(id)}
+      />
       <GroupFormModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}

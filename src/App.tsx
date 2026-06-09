@@ -11,6 +11,9 @@ import { TestQuestionPage } from './pages/testQuestion/TestQuestionPage';
 import { ReflectionQuestionPage } from './pages/reflectionQuestion/ReflectionQuestionPage';
 import { FeedbackPromptPage } from './pages/feedbackPrompt/FeedbackPromptPage';
 import { IntroductionPage } from './pages/introduction/IntroductionPage';
+import { GroupPage } from './pages/group/GroupPage';
+import { ReflectionPage } from './pages/reflection/ReflectionPage';
+import { TimePerspectiveCategoryPage } from './pages/timePerspectiveCategory/TimePerspectiveCategoryPage';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -36,6 +39,9 @@ function App() {
                 <Route path="/reflection-questions" element={<ReflectionQuestionPage />} />
                 <Route path="/feedback-prompts" element={<FeedbackPromptPage />} />
                 <Route path="/introductions" element={<IntroductionPage />} />
+                <Route path="/groups" element={<GroupPage />} />
+                <Route path="/reflections" element={<ReflectionPage />} />
+                <Route path="/time-perspective-categories" element={<TimePerspectiveCategoryPage />} />
               </Route>
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />

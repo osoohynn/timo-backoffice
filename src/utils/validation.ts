@@ -42,9 +42,26 @@ export const introductionSchema = z.object({
   imageUrl: z.string().min(1, '이미지 URL을 입력하세요'),
 });
 
+export const groupSchema = z.object({
+  name: z.string().min(1, '그룹명을 입력하세요'),
+  type: z.enum(['FRIEND', 'CHARACTER'], '그룹 유형을 선택하세요'),
+  image: z.string().optional(),
+});
+
+export const timePerspectiveCategorySchema = z.object({
+  name: z.string().min(1, '이름을 입력하세요'),
+  englishName: z.string().optional(),
+  characterName: z.string().optional(),
+  personality: z.string().optional(),
+  description: z.string().min(1, '설명을 입력하세요'),
+  idealValue: z.number().optional(),
+});
+
 export type LoginFormData = z.infer<typeof loginSchema>;
 export type TestFormData = z.infer<typeof testSchema>;
 export type TestQuestionFormData = z.infer<typeof testQuestionSchema>;
 export type ReflectionQuestionFormData = z.infer<typeof reflectionQuestionSchema>;
 export type FeedbackPromptFormData = z.infer<typeof feedbackPromptSchema>;
 export type IntroductionFormData = z.infer<typeof introductionSchema>;
+export type GroupFormData = z.infer<typeof groupSchema>;
+export type TimePerspectiveCategoryFormData = z.infer<typeof timePerspectiveCategorySchema>;

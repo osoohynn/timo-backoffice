@@ -24,3 +24,9 @@ export type {
   CreateIntroductionRequest,
   UpdateIntroductionRequest,
 } from './introduction';
+export type { GroupType, GroupResponse, CreateGroupRequest } from './group';
+export type {
+  TimePerspectiveCategoryResponse,
+  CreateTimePerspectiveCategoryRequest,
+  UpdateTimePerspectiveCategoryRequest,
+} from './timePerspectiveCategory';

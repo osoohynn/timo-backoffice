@@ -7,6 +7,9 @@ import {
   QuestionCircleOutlined,
   MessageOutlined,
   ReadOutlined,
+  TeamOutlined,
+  HistoryOutlined,
+  ClockCircleOutlined,
   LogoutOutlined,
   MenuOutlined,
 } from '@ant-design/icons';
@@ -23,6 +26,9 @@ const menuItems = [
   { key: '/reflection-questions', icon: <QuestionCircleOutlined />, label: '성찰 질문 관리' },
   { key: '/feedback-prompts', icon: <MessageOutlined />, label: '피드백 프롬프트' },
   { key: '/introductions', icon: <ReadOutlined />, label: '소개글 관리' },
+  { key: '/groups', icon: <TeamOutlined />, label: '그룹 관리' },
+  { key: '/reflections', icon: <HistoryOutlined />, label: '회고 관리' },
+  { key: '/time-perspective-categories', icon: <ClockCircleOutlined />, label: '시간관점 카테고리' },
 ];
 
 export function AppLayout() {

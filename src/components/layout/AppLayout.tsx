@@ -10,6 +10,7 @@ import {
   TeamOutlined,
   HistoryOutlined,
   ClockCircleOutlined,
+  PictureOutlined,
   LogoutOutlined,
   MenuOutlined,
 } from '@ant-design/icons';
@@ -29,6 +30,7 @@ const menuItems = [
   { key: '/groups', icon: <TeamOutlined />, label: '그룹 관리' },
   { key: '/reflections', icon: <HistoryOutlined />, label: '회고 관리' },
   { key: '/time-perspective-categories', icon: <ClockCircleOutlined />, label: '시간관점 카테고리' },
+  { key: '/images', icon: <PictureOutlined />, label: '이미지 업로드' },
 ];
 
 export function AppLayout() {

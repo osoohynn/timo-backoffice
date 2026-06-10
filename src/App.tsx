@@ -14,6 +14,7 @@ import { IntroductionPage } from './pages/introduction/IntroductionPage';
 import { GroupPage } from './pages/group/GroupPage';
 import { ReflectionPage } from './pages/reflection/ReflectionPage';
 import { TimePerspectiveCategoryPage } from './pages/timePerspectiveCategory/TimePerspectiveCategoryPage';
+import { ImagePage } from './pages/image/ImagePage';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -42,6 +43,7 @@ function App() {
                 <Route path="/groups" element={<GroupPage />} />
                 <Route path="/reflections" element={<ReflectionPage />} />
                 <Route path="/time-perspective-categories" element={<TimePerspectiveCategoryPage />} />
+                <Route path="/images" element={<ImagePage />} />
               </Route>
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Upload, message } from 'antd';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import type { UploadRequestOption } from 'rc-upload/lib/interface';
+import type { UploadRequestOption } from '@rc-component/upload/lib/interface';
 import { imagesApi } from '../../api/images';
 
 interface ImageUploadProps {

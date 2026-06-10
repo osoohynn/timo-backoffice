@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-import { Modal, Form, Input, Select } from 'antd';
+import { Modal, Form, Select } from 'antd';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { groupSchema, type GroupFormData } from '../../utils/validation';
 import { GROUP_TYPE_OPTIONS } from '../../utils/constants';
+import { ImageUpload } from '../common/ImageUpload';
 
 interface GroupFormModalProps {
   open: boolean;
@@ -71,12 +72,12 @@ export function GroupFormModal({ open, onClose, onSubmit, loading }: GroupFormMo
             )}
           />
         </Form.Item>
-        <Form.Item label="이미지 URL">
+        <Form.Item label="이미지 (선택)">
           <Controller
             name="image"
             control={control}
             render={({ field }) => (
-              <Input {...field} placeholder="이미지 URL을 입력하세요 (선택)" />
+              <ImageUpload value={field.value} onChange={field.onChange} />
             )}
           />
         </Form.Item>

@@ -4,6 +4,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import type { IntroductionResponse } from '../../types';
 import { introductionSchema, type IntroductionFormData } from '../../utils/validation';
+import { ImageUpload } from '../common/ImageUpload';
 
 interface IntroductionFormModalProps {
   open: boolean;
@@ -127,14 +128,16 @@ export function IntroductionFormModal({
           />
         </Form.Item>
         <Form.Item
-          label="이미지 URL"
+          label="이미지"
           validateStatus={errors.imageUrl ? 'error' : ''}
           help={errors.imageUrl?.message}
         >
           <Controller
             name="imageUrl"
             control={control}
-            render={({ field }) => <Input {...field} placeholder="이미지 URL을 입력하세요" />}
+            render={({ field }) => (
+              <ImageUpload value={field.value} onChange={field.onChange} />
+            )}
           />
         </Form.Item>
       </Form>

@@ -47,4 +47,7 @@ export const ENDPOINTS = {
     admin: '/admin/time-perspective-categories',
     adminById: (id: number) => `/admin/time-perspective-categories/${id}`,
   },
+  images: {
+    upload: '/images',
+  },
 } as const;

@@ -50,4 +50,8 @@ export const ENDPOINTS = {
   images: {
     upload: '/images',
   },
+  customizations: {
+    admin: '/admin/customizations',
+    adminById: (id: number) => `/admin/customizations/${id}`,
+  },
 } as const;

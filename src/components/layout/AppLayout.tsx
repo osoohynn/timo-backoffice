@@ -11,6 +11,7 @@ import {
   HistoryOutlined,
   ClockCircleOutlined,
   PictureOutlined,
+  SkinOutlined,
   LogoutOutlined,
   MenuOutlined,
 } from '@ant-design/icons';
@@ -31,6 +32,7 @@ const menuItems = [
   { key: '/reflections', icon: <HistoryOutlined />, label: '회고 관리' },
   { key: '/time-perspective-categories', icon: <ClockCircleOutlined />, label: '시간관점 카테고리' },
   { key: '/images', icon: <PictureOutlined />, label: '이미지 업로드' },
+  { key: '/customizations', icon: <SkinOutlined />, label: '커스터마이징 관리' },
 ];
 
 export function AppLayout() {

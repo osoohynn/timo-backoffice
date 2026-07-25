@@ -65,3 +65,24 @@ export type FeedbackPromptFormData = z.infer<typeof feedbackPromptSchema>;
 export type IntroductionFormData = z.infer<typeof introductionSchema>;
 export type GroupFormData = z.infer<typeof groupSchema>;
 export type TimePerspectiveCategoryFormData = z.infer<typeof timePerspectiveCategorySchema>;
+
+export const customizationImageSchema = z.object({
+  category: z.enum(
+    ['PAST_NEGATIVE', 'PAST_POSITIVE', 'PRESENT_HEDONISTIC', 'PRESENT_FATALISTIC', 'FUTURE'],
+    '카테고리를 선택하세요'
+  ),
+  image: z.string().min(1, '이미지 URL을 입력하세요'),
+  imageWithoutBackground: z.string().min(1, '배경 없는 이미지 URL을 입력하세요'),
+});
+
+export const customizationSchema = z.object({
+  name: z.string().min(1, '아이템명을 입력하세요'),
+  type: z.enum(['THEME', 'DECORATION'], '유형을 선택하세요'),
+  description: z.string(),
+  unlockConditionType: z.enum(['TOTAL_COUNT', 'STREAK_COUNT'], '조건 유형을 선택하세요'),
+  unlockConditionCount: z.number({ error: '조건값을 입력하세요' }).min(1, '1 이상이어야 합니다'),
+  usesCharacterImage: z.boolean(),
+  images: z.array(customizationImageSchema).min(1, '이미지를 1개 이상 추가하세요'),
+});
+
+export type CustomizationFormData = z.infer<typeof customizationSchema>;

@@ -30,3 +30,11 @@ export type {
   CreateTimePerspectiveCategoryRequest,
   UpdateTimePerspectiveCategoryRequest,
 } from './timePerspectiveCategory';
+export type {
+  CustomizationType,
+  UnlockConditionType,
+  AdminCustomizationItemResponse,
+  AdminCustomizationItemDetailResponse,
+  CreateCustomizationItemRequest,
+  UpdateCustomizationItemRequest,
+} from './customization';

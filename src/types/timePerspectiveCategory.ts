@@ -6,6 +6,7 @@ export interface TimePerspectiveCategoryResponse {
   personality?: string;
   description: string;
   idealValue?: number;
+  image?: string;
 }
 
 export interface CreateTimePerspectiveCategoryRequest {
